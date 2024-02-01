@@ -1,0 +1,18 @@
+<!-- automacao_app/templates/automacao_app/configuracao_automacao.html -->
+from django.urls import path
+from .views import minha_pagina
+
+urlpatterns = [
+    path('minha-pagina/', minha_pagina, name='minha_pagina'),
+]
+
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Configuração de Automação</h2>
+  <form method="post" action="{% url 'configuracao_automacao' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Salvar Configuração</button>
+  </form>
+
